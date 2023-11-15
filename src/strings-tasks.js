@@ -133,8 +133,13 @@ function removeTrailingWhitespaces(value) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  // if (times < 0) {
+  //   return '';
+  // }
+  // return str.repeat(times);
+  const repeatedStr = times > 0 ? str.repeat(times) : 0;
+  return repeatedStr;
 }
 
 /**
@@ -149,8 +154,13 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  // визначаємо індекс першого входження підстроки, якщо не згайдено поаерне -1
+  const index = str.indexOf(value);
+  //  slice повертає частину рядка від початку до індексу 1-го входження (не вкл його) і частину після першого входження починаючи з індексу, який вказує на кінець входження і додаючи довжину підстроки, яку ми хочемо вилучити
+  return index !== -1
+    ? str.slice(0, index) + str.slice(index + value.length)
+    : str;
 }
 
 /**
