@@ -398,7 +398,7 @@ function findLongestWord(sentence) {
  */
 function reverseWords(str) {
   const strArr = str.split(' ');
-  // використаємо map для обертання кожного слова
+  // використаємо map для реверсу кожного слова
   const reversedWords = strArr.map((word) => word.split('').reverse().join(''));
   const reversedStr = reversedWords.join(' ');
 
@@ -416,8 +416,13 @@ function reverseWords(str) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  const strArr = str.split('');
+  const revertWords = strArr.map((word) =>
+    word === word.toUpperCase() ? word.toLowerCase() : word.toUpperCase()
+  );
+  const invertedStr = revertWords.join('');
+  return invertedStr;
 }
 
 /**
