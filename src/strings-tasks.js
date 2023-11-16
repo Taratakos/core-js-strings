@@ -272,8 +272,8 @@ function formatTime(minutes, seconds) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 /**
@@ -287,8 +287,8 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  return str.split('').sort().join('');
 }
 
 /**
@@ -303,8 +303,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -321,8 +321,20 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  // return Array.from(str).filter((char) => 'aeiouAEIOUyY'.includes(char)).length;
+  // reduce() - використовується для зменшення масиву до одного значення. Ф-ія reduce використовує початкове значення 0 для acc та первіряє кожен символ у масиві. Якщо символ є голосним acc збільшується на 1. Після обробки всіх елементів масиву, результатом є к-сть голосних у рядку
+  return str
+    .split('')
+    .reduce(
+      (acc, char) =>
+        ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'].includes(
+          char
+        )
+          ? acc + 1
+          : acc,
+      0
+    );
 }
 
 /**
