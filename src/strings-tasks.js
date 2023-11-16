@@ -438,8 +438,8 @@ function invertCase(str) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -452,8 +452,16 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  // Використовуємо регулярний вираз для знаходження ім'я та прізвища в рядку
+  const match = value.match(/Hello, (.+?)!/);
+
+  // Перевіряємо, чи було знайдено відповідність
+  if (match && match[1]) {
+    return match[1];
+  }
+  // Повертаємо порожній рядок, якщо не вдалося знайти ім'я
+  return '';
 }
 
 /**
