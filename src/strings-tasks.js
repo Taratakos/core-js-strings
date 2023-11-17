@@ -531,10 +531,19 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
-}
+function encodeToRot13(str) {
+  // const str = "Apples are round, and apples are juicy.";
+  // const newstr = str.replace(/apples/gi, "oranges");
+  // console.log(newstr); // oranges are round, and oranges are juicy.
 
+  // Оголошення двох рядків для вхідного та вихідного алфавіту
+  const input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+
+  // Використовуємо регулярний вираз для знаходження всіх літер в рядку
+  // та замінюємо їх на шифровані літери відповідно до ROT13
+  return str.replace(/[a-z]/gi, (letter) => output[input.indexOf(letter)]);
+}
 /**
  * Returns playid card id.
  *
@@ -559,8 +568,15 @@ function encodeToRot13(/* str */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  // Знаходимо індекс масті картинки (♣♦♥♠) і множимо його на 13
+  const suitIndex = '♣♦♥♠'.indexOf(value[value.length - 1]) * 13;
+
+  // Знаходимо індекс рангу карти (A234567891JQK)
+  const rankIndex = 'A234567891JQK'.indexOf(value[0]);
+
+  // Повертаємо суму обох індексів, яка і буде унікальним ідентифікатором для карти
+  return suitIndex + rankIndex;
 }
 
 module.exports = {
